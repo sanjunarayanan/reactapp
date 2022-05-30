@@ -1,0 +1,22 @@
+{
+  "name": "yes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanjunarayanan/reactapp.git"
+  },
+  "author": "sanju",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sanjunarayanan/reactapp/issues"
+  },
+  "homepage": "https://github.com/sanjunarayanan/reactapp#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
