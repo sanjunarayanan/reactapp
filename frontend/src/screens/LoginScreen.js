@@ -11,18 +11,15 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
-
-  const redirect = ''
-
   const dispatch = useDispatch()
   const userLogin = useSelector((state) => state.userLogin)
   const { loading, error, userInfo } = userLogin
 
   useEffect(() => {
-    if (userInfo) {
-      navigate(redirect)
+    if (userInfo?.token) {
+      navigate('/', { replace: true })
     }
-  }, [navigate, userInfo, redirect])
+  }, [navigate, userInfo])
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -37,22 +34,25 @@ const LoginScreen = () => {
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="email">
           <Form.Label>Email Address</Form.Label>
+          <br />
           <Form.Control
             type="email"
             placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}></Form.Control>
         </Form.Group>
-
+        <br />
         <Form.Group controlId="password">
           <Form.Label>Password</Form.Label>
+          <br />
           <Form.Control
             type="password"
             placeholder="Enter password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}></Form.Control>
         </Form.Group>
-
+        <br />
+        <br />
         <Button type="submit" variant="primary">
           Sign In
         </Button>
@@ -60,10 +60,8 @@ const LoginScreen = () => {
       <br></br>
       <Row className="py-3">
         <Col>
-          New Customer?{' '}
-          <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
-            Register
-          </Link>
+          New Customer?
+          <Link to={'/register'}>Register</Link>
         </Col>
       </Row>
     </FormContainer>

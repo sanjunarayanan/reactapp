@@ -174,5 +174,5 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
 export const logout = () => (dispatch) => {
   localStorage.removeItem('userInfo')
   dispatch({ type: USER_LOGOUT })
-  document.location.href = '/login'
+  document.location.href = '/'
 }
