@@ -6,20 +6,30 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { login } from '../actions/userActions'
 import FormContainer from '../components/FormContainer'
+import { useLocation } from 'react-router-dom'
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const location = useLocation()
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const userLogin = useSelector((state) => state.userLogin)
+
   const { loading, error, userInfo } = userLogin
+
+  let redirect = location.search ? location.search.split('=')[1] : '/'
 
   useEffect(() => {
     if (userInfo?.token) {
-      navigate('/', { replace: true })
+      if (redirect == '/') {
+        navigate(redirect, { replace: true })
+      } else {
+        redirect = '/' + redirect
+        navigate(redirect, { replace: true })
+      }
     }
-  }, [navigate, userInfo])
+  }, [navigate, userInfo, redirect])
 
   const submitHandler = (e) => {
     e.preventDefault()
