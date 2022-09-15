@@ -34,10 +34,9 @@ const PlaceOrderScreen = () => {
     if (success) {
       navigate(`/order/${order._id}`)
     }
-  }, [success])
+  }, [success, order, navigate])
 
   const placeOrderHandler = () => {
-    console.log('place orderd..')
     dispatch(
       createOrder({
         orderItems: cart.cartItems,
